@@ -1,0 +1,149 @@
+*{
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
+.popover{max-width: 1000px;text-align: center;}
+.tooltip-inner{max-width:1000px;background-color: #2CA7C7;}
+.tooltip.left .tooltip-arrow{border-left-color: #5ECEEB;}
+.tooltip.right .tooltip-arrow{border-right-color: #5ECEEB;}
+.tooltip.top .tooltip-arrow{border-top-color: #5ECEEB;}
+.tooltip.bottom .tooltip-arrow{border-bottom-color: #5ECEEB;}
+
+/*
+.my-mahjong{min-width: 990px;width: 990px;min-height: 830px;height: 830px;position: absolute;}
+*/
+
+/*麻将字体、颜色*/
+@font-face{font-family:'mahjong';src:url(GL-MahjongTile.ttf); font-style:normal; font-weight:normal}
+.mahjong{
+	font-family:mahjong;
+	font-size:70px;
+	color: green;
+	position: relative;
+}
+.west .mahjong,
+.east .mahjong{
+	display: block;
+}
+.west .mahjong{
+	-webkit-transform: scale(-1,1);
+}
+.north .mahjong{
+	display:inline-block;
+	-webkit-transform:rotate(-180deg);
+}
+/*注意以下的不能用hover实现，而是js控制*/
+.west .mahjong.hover{
+	right: -20px;
+}
+.south .mahjong.hover{
+	top: -20px;
+}
+.east .mahjong.hover{
+	left: -20px;
+}
+.north .mahjong.hover{
+	bottom: -20px;
+}
+
+.one.gray , .one.gray .mahjong{
+	color: #777;
+}
+.one.red , .one.red .mahjong{
+	color: #E74343;
+}
+.one.black , .one.black .mahjong{
+	color: #050505;
+}
+.one .num{
+	background-color:#60A9E2;
+}
+.one.gray .num{
+	background-color:#777;
+}
+.one.red .num{
+	background-color:#E74343;
+}
+.one.black .num{
+	background-color:#050505;
+}
+
+
+/*一个牌*/
+.one{
+	cursor: pointer;
+	position: relative;
+	width: 70px;
+	display: inline-block;
+	margin-right: 10px;
+}
+.opt{
+	font-weight: bold;
+	position: absolute;
+	left: 55px;
+	top: 20px;
+}
+.opt > *{
+	display: inline-block;
+	width: 20px;
+	text-align: center;
+}
+.transparent{
+	z-index: 2;
+	width: 46px;
+	height: 29px;
+	left: -43px;
+	position: absolute;
+}
+.plus.transparent{
+	left: -43px;
+	top: 0;
+}
+.minus.transparent{
+	top: 30px;
+}
+
+/*玩家*/
+.player{
+	background-color: #ECECEC;
+	position: absolute;
+	text-align: center;
+	cursor: pointer;
+}
+.player.h{
+	height: 100%;
+	width: 100px;
+}
+.player.v{
+	width: 100%;
+	height: 100px;
+}
+.s{
+	bottom: 0;
+}
+.e{
+	right: 0;
+}
+.west,
+.east{
+	width: 100px;
+	position: absolute;
+	top: 50%;
+	line-height: 47px;
+	-webkit-transform: translateY(-50%);
+}
+
+/*牌面*/
+.desktop{
+	position: absolute;
+	float: left;
+	top: 120px;
+	left: 120px;
+	right: 120px;
+	text-align: center;
+}
+.play{
+	text-align: center;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+	<title>推倒胡</title>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/icon.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+	<link href="css/mahjong.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="my-mahjong">
+		<!-- 上家 -->
+		<div class="player h"><div class="west" data-direction="west"></div></div>
+		<!-- 本家 -->
+		<div class="player v s"><div class="south" data-direction="south"></div></div>
+		<!-- 下家 -->
+		<div class="player h e"><div class="east" data-direction="east"></div></div>
+		<!-- 对家 -->
+		<div class="player v"><div class="north" data-direction="north"></div></div>
+
+		<!-- 桌面 -->
+		<div class="desktop">
+			<div class="tab-content">
+				<!-- 剩余牌局 -->
+				<div id="unknow" class="tab-pane active">
+					<div data-type="wangzi" data-prefix="unknow"></div>
+					<div data-type="tiaozi" data-prefix="unknow"></div>
+					<div data-type="bingzi" data-prefix="unknow"></div>
+					<div data-type="dazi" data-prefix="unknow"></div>
+				</div>
+				<!-- 已打出牌局 -->
+				<div id="know" class="tab-pane">
+					<div data-type="wangzi" data-prefix="know"></div>
+					<div data-type="tiaozi" data-prefix="know"></div>
+					<div data-type="bingzi" data-prefix="know"></div>
+					<div data-type="dazi" data-prefix="know"></div>
+				</div>
+			</div>
+			
+			<!-- 操作 -->
+			<div class="option">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="active"><a href="#unknow" role="tab" data-toggle="tab">未打出的牌</a></li>
+					<li><a href="#know" role="tab" data-toggle="tab">已打出的牌</a></li>
+				</ul>
+				<button class="btn btn-danger" id="reinit">重新开局</button>
+				<button class="btn btn-default" id="help">帮助</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 牌子模板 -->
+	<script id="one-model" language="text">
+		<span class='one'>
+			<span class='mahjong'></span>
+			<span class='opt'>
+				<span class='badge num' title='剩余牌数'>4</span>
+				<span class='plus' data-count='1' title='加一张牌'>+</span>
+				<span class='minus' data-count='-1' title='减一张牌'>-</span>
+				<span class='plus transparent' data-count='1' title='加一张牌'></span>
+				<span class='minus transparent' data-count='-1' title='减一张牌'></span>
+			</span>
+		</span>
+	</script>
+	<!-- 帮助 -->
+	<script id="help-model" language="text">
+		<p><span class='badge'>1</span>你造么，这是麻将记牌器喔</p>
+		<p><span class='badge'>2</span>你造么，可以点击 +、- 号来打牌喔</p>
+		<p><span class='badge'>3</span>你造么，还可以双击麻将的上部或者下部来打牌喔</p>
+		<p><span class='badge'>4</span>你造么，可以切换看看未打出的牌和已打出的牌喔</p>
+		<p><span class='badge'>5</span>你造么，任意刷新，数据还在喔，除非你按了“重新开局”</p>
+	</script>
+	<!-- 玩家打牌 -->
+	<script id="play-model" language="text">
+		<div class="play">
+			<p>当你知道这张牌是什么的时候，你可以选择明牌喔</p>
+			<button class="btn btn-success" data-play="show">明牌</button>
+			<button class="btn btn-warning" data-play="hide">反牌</button>
+			<button class="btn btn-default" data-play="out">退出</button>
+		</div>
+	</script>
+	<!-- 选择打牌 -->
+	<script id="list-model" language="text">
+		<div>adada</div>
+	</script>
+	
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.plugin.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/mahjong.js"></script>
+	<script>
+	//处理屏幕
+	var $main = $(".my-mahjong");
+	var resize = function(){
+		var height = $(window).height();//浏览器当前窗口可视区域高度
+		var width  = $(window).width();//浏览器当前窗口可视区域宽度
+		var _h = height / 830;
+		var _w = width / 990;
+		if(_h < 1 || _w < 1){
+			$main.css("zoom", _h<_w ? _h:_w);
+		}
+	};
+	resize();
+	window.onresize = resize;
+
+	var mj = new MJ();
+	$("#reinit").click(function(){
+		mj.init();
+	});
+
+	$("#help").popover({
+		html:true,
+		placement:"top",
+		container:"body",
+		trigger:"click",
+		content:$("#help-model").html(),
+		delay: {show: 500, hide: 100}
+	});
+	</script>
+</body>
+</html>
