@@ -9,7 +9,7 @@
 	<link href="css/style.css" rel="stylesheet" />
 	<link href="css/mahjong.css" rel="stylesheet" />
 </head>
-<body>
+<body class="body-zoom">
 	<div class="my-mahjong">
 		<!-- 上家 -->
 		<div class="player h"><div class="west" data-direction="west"></div></div>
@@ -80,7 +80,8 @@
 	<!-- 玩家打牌 -->
 	<script id="play-model" language="text">
 		<div class="play">
-			<p>当你知道这张牌是什么的时候，你可以选择明牌喔</p>
+			<p id="play-show">当你知道这张牌是什么，你可以选择明牌喔</p>
+			<p id="play-hide">当你不知道这张牌是什么，你还是反牌吧</p>
 			<button class="btn btn-success" data-play="show">明牌</button>
 			<button class="btn btn-warning" data-play="hide">反牌</button>
 			<button class="btn btn-default" data-play="out">退出</button>
@@ -98,14 +99,13 @@
 	<script src="js/mahjong.js"></script>
 	<script>
 	//处理屏幕
-	var $main = $(".my-mahjong");
 	var resize = function(){
 		var height = $(window).height();//浏览器当前窗口可视区域高度
 		var width  = $(window).width();//浏览器当前窗口可视区域宽度
 		var _h = height / 830;
 		var _w = width / 990;
 		if(_h < 1 || _w < 1){
-			$main.css("zoom", _h<_w ? _h:_w);
+			$("body").css("zoom", _h<_w ? _h:_w);
 		}
 	};
 	resize();

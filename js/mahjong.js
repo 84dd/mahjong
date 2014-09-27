@@ -279,8 +279,10 @@ var MJ = function(){
 
 		if(/9|\)/.test($mahjong.html())){
 			$hide.hide();
+			$play.find("#play-hide").hide();
 		}else{
 			$show.hide();
+			$play.find("#play-show").hide();
 		}
 
 
