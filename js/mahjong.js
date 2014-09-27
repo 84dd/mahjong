@@ -250,7 +250,7 @@ var MJ = function(){
 	};
 
 	//玩家打牌
-	$(".player").delegate(".mahjong", "mouseenter" , function(){
+	var play = function(){
 		var $mahjong = $(this);
 		var $div = $mahjong.parents("[data-direction]:eq(0)");
 		var mahjong = $mahjong.data("mahjong");
@@ -357,7 +357,9 @@ var MJ = function(){
 			$mahjong.removeClass("hover").tooltip("destroy");
 			$(".popover").remove();
 		});
-	});
+	};
+	$(".player").delegate(".mahjong", "mouseenter" , play);
+	$(".player").delegate(".mahjong", "click" , play);
 
 	//初始化一局
 	this.init = function(isLoad){
