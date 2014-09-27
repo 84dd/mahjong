@@ -150,3 +150,12 @@
 .help{
 	text-align: left;
 }
+.help .blue{
+	background-color: #447C4D;
+	margin-right: 8px;
+}
+.help .notice{
+	font-weight: bold;
+	font-size: 12px;
+	color: #9B9B9B;
+}
